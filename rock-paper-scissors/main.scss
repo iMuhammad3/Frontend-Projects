@@ -19,6 +19,9 @@ button{
     border: none;
     border-radius: 2px
 }
+button:disabled{
+    cursor: not-allowed
+}
 body{
     @include center();
     background: radial-gradient(rgb(243, 252, 255), rgb(218, 218, 240));
@@ -26,13 +29,17 @@ body{
     min-height: 100vh;
 }
 .container{
+    width: 80%;
+    max-width: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    border: 1px solid midnightblue;
 }
 .scores{
     display: flex;
     padding: 1rem;
     gap: 10px;
+    
 }
