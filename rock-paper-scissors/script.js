@@ -1,7 +1,7 @@
 const computersChoiceEl = document.getElementById('computers-choice')
 const userScoreEl = document.getElementById('user-score')
 const computerScoreEl = document.getElementById('computer-score')
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('.player > button')
 const roundEl = document.getElementById('round')
 const resultEl = document.getElementById('score')
 
@@ -9,22 +9,22 @@ const rockId = 1
 const paperId = 2
 const scissorsId = 3
 
-let userChoice;
-let computersChoice;
+let userChoice
+let computersChoice
 let userScore = 0
 let computerScore = 0
 let round = 1
 
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-        showWinner()
         userChoice = e.target.id == 'rock' ? 1 : e.target.id == 'paper' ? 2 : 3
         computersChoice = Math.floor(Math.random() * 3) + 1
-        computersChoiceEl.innerHTML = showComputersChoice()
         updateResult()
+        computersChoiceEl.innerHTML = showComputersChoice()
         roundEl.innerHTML = round++
         userScoreEl.innerHTML = userScore
         computerScoreEl.innerHTML = computerScore
+        showWinner()
     })
 })
 
@@ -49,21 +49,37 @@ function updateResult(){
     // if user picks scissors and computer paper
     if(userChoice === 3 && computersChoice === 2) userScore++
 
-    // anything else is a draw
-    return `draw`
 }
 
+// display the winner
 function showWinner(){
-    if(round == 5){
+    let winner = ''
+    if(round > 5){
         buttons.forEach(button => {
             button.disabled = true
         })
-        userScore > computerScore ? resultEl.innerHTML = 'You win!' :
-        userScore < computerScore ? resultEl.innerHTML = 'You lose!' :
-        'Draw'
+        console.log(userScore)
+        console.log(computerScore)
+        winner = userScore == computerScore ? 'Draw' :
+        userScore < computerScore ? 'You lose!' : 'You win!'
     }
+    resultEl.innerHTML = winner
 }
 
+// restart the game
+function restart(){
+    userScoreEl.innerHTML = ''
+    computerScoreEl.innerHTML = ''
+    computersChoiceEl.innerHTML = ''
+    userScore = 0
+    computerScore = 0
+    round = 1
+    roundEl.innerHTML = 0
+    resultEl.innerHTML = ''
+    buttons.forEach(button => {
+        button.disabled = false
+    })
+}
 // to do 
 // option to play computer or multiplayer
 // can choose how many rounds
