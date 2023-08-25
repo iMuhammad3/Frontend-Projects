@@ -107,6 +107,14 @@ body{
                 cursor: pointer;
                 font-size: 25px;
             }
+            .rounds-select{
+                display: flex;
+                align-items: center;
+                gap: 0 .4rem;
+                select{
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

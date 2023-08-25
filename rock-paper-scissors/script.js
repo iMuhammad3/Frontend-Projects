@@ -18,14 +18,17 @@ let round = 1
 
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-        userChoice = e.target.id == 'rock' ? 1 : e.target.id == 'paper' ? 2 : 3
+        userChoice = button.id == 'rock' ? 1 : button.id == 'paper' ? 2 : 3
+        console.log(button.id)
         computersChoice = Math.floor(Math.random() * 3) + 1
         updateResult()
         computersChoiceEl.innerHTML = showComputersChoice()
         roundEl.innerHTML = round++
+        document.getElementById('roundNumValue').innerHTML = document.getElementById('roundsNum').value
         userScoreEl.innerHTML = userScore
         computerScoreEl.innerHTML = computerScore
         showWinner()
+        console.log(userChoice, computersChoice)
     })
 })
 
@@ -35,6 +38,7 @@ settingBtn.addEventListener('click', ()=> {
 document.querySelector('.closeBtn').addEventListener('click', ()=>{
     document.querySelector('.modal-container').style.display = 'none'
 })
+document.getElementById('roundsNum').addEventListener('change', () => document.getElementById('roundNumValue').innerHTML = document.getElementById('roundsNum').value)
 
 function showComputersChoice() {
     if (computersChoice === rockId) return `<svg xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -54,29 +58,28 @@ function showComputersChoice() {
 
 function updateResult() {
     // if user picks rock and computer paper
-    if (userChoice === 1 && computersChoice === 2) computerScore++
+    if (userChoice === rockId && computersChoice === paperId) computerScore++
     // if user picks rock and computer scissors
-    if (userChoice === 1 && computersChoice === 3) userScore++
+    if (userChoice === rockId && computersChoice === scissorsId) userScore++
     // if user picks paper and computer rock
-    if (userChoice === 2 && computersChoice === 1) userScore++
+    if (userChoice === paperId && computersChoice === rockId) userScore++
     // if user picks paper and computer scissors
-    if (userChoice === 2 && computersChoice === 3) computerScore++
+    if (userChoice === paperId && computersChoice === scissorsId) computerScore++
     // if user picks scissors and computer rock
-    if (userChoice === 3 && computersChoice === 1) computerScore++
+    if (userChoice === scissorsId && computersChoice === rockId) computerScore++
     // if user picks scissors and computer paper
-    if (userChoice === 3 && computersChoice === 2) userScore++
+    if (userChoice === scissorsId && computersChoice === paperId) userScore++
 
 }
 
 // display the winner
 function showWinner() {
+    const roundsNum = document.getElementById('roundsNum').value
     let winner = ''
-    if (round > 5) {
+    if (round > roundsNum) {
         buttons.forEach(button => {
             button.disabled = true
         })
-        console.log(userScore)
-        console.log(computerScore)
         winner = userScore == computerScore ? 'Draw' :
             userScore < computerScore ? 'You lose!' : 'You win!'
     }
@@ -99,4 +102,5 @@ function restart() {
 }
 // to do
 // option to play computer or multiplayer
-// can choose how many rounds
+// can choose how many rounds //completed
+// watch computers play

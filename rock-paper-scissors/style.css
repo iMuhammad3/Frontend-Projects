@@ -99,3 +99,11 @@ body .modal-container .modal > span.closeBtn {
   cursor: pointer;
   font-size: 25px;
 }
+body .modal-container .modal .rounds-select {
+  display: flex;
+  align-items: center;
+  gap: 0 0.4rem;
+}
+body .modal-container .modal .rounds-select select {
+  cursor: pointer;
+}
