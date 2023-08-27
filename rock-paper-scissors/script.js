@@ -89,14 +89,14 @@ function showWinner() {
 
 // restart the game
 function restart() {
-    userScoreEl.innerHTML = ''
-    computerScoreEl.innerHTML = ''
-    computersChoiceEl.innerHTML = ''
+    userScoreEl.innerText = ''
+    computerScoreEl.innerText= ''
+    computersChoiceEl.innerText = ''
     userScore = 0
     computerScore = 0
     round = 1
-    roundEl.innerHTML = 0
-    resultEl.innerHTML = ''
+    roundEl.innerText = 0
+    resultEl.innerText = ''
     buttons.forEach(button => {
         button.disabled = false
     })
