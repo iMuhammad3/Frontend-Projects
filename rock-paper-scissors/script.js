@@ -5,6 +5,7 @@ const buttons = document.querySelectorAll('.player button')
 const roundEl = document.getElementById('round')
 const resultEl = document.getElementById('score')
 const settingBtn = document.getElementById('settingBtn')
+const modalContainer = document.querySelector('.modal-container')
 
 const rockId = 1
 const paperId = 2
@@ -33,10 +34,10 @@ buttons.forEach(button => {
 })
 
 settingBtn.addEventListener('click', ()=> {
-    document.querySelector('.modal-container').style.display = 'flex'
+    modalContainer.style.display = 'flex'
 })
 document.querySelector('.closeBtn').addEventListener('click', ()=>{
-    document.querySelector('.modal-container').style.display = 'none'
+    modalContainer.style.display = 'none'
 })
 document.getElementById('roundsNum').addEventListener('change', () => document.getElementById('roundNumValue').innerHTML = document.getElementById('roundsNum').value)
 
@@ -100,7 +101,3 @@ function restart() {
         button.disabled = false
     })
 }
-// to do
-// option to play computer or multiplayer
-// can choose how many rounds //completed
-// watch computers play
