@@ -57,6 +57,7 @@ body{
     @include center();
     cursor: pointer;
     border-radius: $radius;
+    background-color: color-mix(in oklab, $bg-blue, #0004);
 }
 
 .keys > div{
