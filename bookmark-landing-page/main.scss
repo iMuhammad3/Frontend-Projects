@@ -1,0 +1,23 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+// Variables
+$bg-main: hsl(224, 100%, 98%);
+$soft-blue: hsl(231, 69%, 60%);
+$soft-red: hsl(0, 94%, 66%);
+$grayish-blue: hsl(229, 8%, 60%);
+$dark-blue: hsl(229, 31%, 21%);
+$font-family: 'Rubik', sans-serif;
+
+// mixins
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
+}
+body{
+    color: $dark-blue;
+    background-color: $bg-main;
+}
