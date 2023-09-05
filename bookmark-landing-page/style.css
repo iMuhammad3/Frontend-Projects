@@ -44,22 +44,86 @@ nav button {
   border-radius: 4px;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1333333333);
 }
+nav #hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
 
-section {
+.first-section {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  padding: 3rem;
 }
-section > :first-child > h1 {
+.first-section > :first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.first-section > :first-child > h1 {
   font-size: 40px;
   font-weight: 500;
 }
-section > :first-child > p {
+.first-section > :first-child > p {
   color: hsl(229, 8%, 60%);
+  text-wrap: balance;
 }
-section > :nth-child(2) {
+.first-section > :first-child > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.first-section > :first-child button {
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  background-color: hsl(231, 69%, 60%);
+  color: hsl(0, 100%, 100%);
+  box-shadow: 0 4px 10px rgba(34, 34, 85, 0.2);
+}
+.first-section > :first-child button:last-child {
+  background-color: #dde;
+  color: hsl(229, 31%, 21%);
+}
+.first-section > :nth-child(2) {
+  position: relative;
   width: 100%;
+  max-height: 500px;
+}
+.first-section > :nth-child(2)::after {
+  content: "";
+  position: absolute;
+  background-color: hsl(231, 69%, 60%);
+  inset: 0 0 0 0;
   height: 300px;
-  background-color: hsl(229, 31%, 21%);
+  width: 100%;
+  border-radius: 9999px 0 0 9999px;
+  z-index: -1;
+  transform: translate(30%, 50%);
+}
+
+@media (max-width: 1156px) {
+  .first-section {
+    flex-direction: column;
+  }
+  .first-section > :first-child {
+    align-items: center;
+    text-align: center;
+  }
+  .first-section > :nth-child(2) {
+    order: -1;
+  }
+}
+@media (max-width: 720px) {
+  nav > ul {
+    display: none;
+  }
+  #hamburger-menu {
+    display: block !important;
+  }
 }

@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
 
 // Variables
+$white: hsl(0, 100%, 100%);
 $bg-main: hsl(224, 100%, 98%);
 $soft-blue: hsl(231, 69%, 60%);
 $soft-red: hsl(0, 94%, 66%);
@@ -10,6 +11,8 @@ $dark-blue: hsl(229, 31%, 21%);
 
 $font-family: 'Rubik', sans-serif;
 $font-lg: 40px;
+
+$radius: 4px;
 
 // mixins
 @mixin display($display: flex, $direction: row, $justify: center, $align: center){
@@ -59,25 +62,87 @@ nav{
         color: $bg-main;
         background-color: $soft-red;
         padding: .5rem 1.5rem;
-        border-radius: 4px;
+        border-radius: $radius;
         @include shadow($top: 3px);
+    }
+    #hamburger-menu{
+        display: none;
+        cursor: pointer;
     }
 }
 
-section{
+.first-section{
     @include display();
+    gap: 10px;
+    padding: 3rem;
+    // first div of the first section
     &>:first-child{
+    @include display($direction: column, $align: flex-start);
+    gap: 20px;
         &>h1{
             font-size: $font-lg;
             font-weight: 500;
         }
         &>p{
             color: $grayish-blue;
+            text-wrap: balance;
+        }
+        // div wrapping both buttons
+        &>div{
+            @include display();
+            gap: 30px;
+        }
+        & button{
+            padding: .7rem 1rem;
+            border-radius: $radius;
+            background-color: $soft-blue;
+            color: $white;
+            @include shadow($top: 4px, $blur:10px, $color: #2253);
+            // second button
+            &:last-child{
+                background-color: #dde;
+                color: $dark-blue;
+            }
         }
     }
+    // second div of the first section
     &>:nth-child(2){
+        position: relative;
         width: 100%;
-        height: 300px;
-        background-color: $dark-blue;
+        max-height: 500px;
+        &::after{
+            content: '';
+            position: absolute;
+            background-color: $soft-blue;
+            inset: 0 0 0 0;
+            height: 300px;
+            width: 100%;
+            border-radius: 9999px 0 0 9999px;
+            z-index: -1;
+            transform: translate(30%, 50%);
+        }
+    }
+}
+
+// media queries
+@media (max-width: 1156px){
+    .first-section{
+        flex-direction: column;
+        &>:first-child{
+            align-items: center;
+            text-align: center;
+        }
+        &> :nth-child(2){
+            order: -1;
+        }
+    }
+}
+
+@media (max-width: 720px){
+    nav > ul{
+        display: none;
+    }
+    #hamburger-menu{
+        display: block !important;
     }
 }
