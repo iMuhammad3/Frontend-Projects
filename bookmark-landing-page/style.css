@@ -107,6 +107,26 @@ nav #hamburger-menu {
   transform: translate(30%, 50%);
 }
 
+.second-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+.second-section > .heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+  text-align: center;
+  gap: 10px;
+}
+.second-section > .heading > p {
+  color: hsl(229, 8%, 60%);
+}
+
 @media (max-width: 1156px) {
   .first-section {
     flex-direction: column;

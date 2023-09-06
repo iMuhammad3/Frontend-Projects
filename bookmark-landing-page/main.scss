@@ -124,6 +124,21 @@ nav{
     }
 }
 
+.second-section{
+    @include display($direction: column);
+    padding: 3rem;
+    &>.heading{
+        @include display($direction: column);
+        max-width: 500px;
+        text-align: center;
+        gap: 10px;
+        &>p{
+            color: $grayish-blue;
+        }
+    }
+}
+
+
 // media queries
 @media (max-width: 1156px){
     .first-section{
