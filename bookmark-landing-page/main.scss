@@ -6,11 +6,15 @@ $white: hsl(0, 100%, 100%);
 $bg-main: hsl(224, 100%, 98%);
 $soft-blue: hsl(231, 69%, 60%);
 $soft-red: hsl(0, 94%, 66%);
-$grayish-blue: hsl(229, 8%, 60%);
+$grey: hsl(229, 4%, 50%);
 $dark-blue: hsl(229, 31%, 21%);
 
 $font-family: 'Rubik', sans-serif;
 $font-lg: 40px;
+
+$size-sm: 10px;
+$size-md: 20px;
+$size-lg: 30px;
 
 $radius: 4px;
 
@@ -36,6 +40,7 @@ $radius: 4px;
 body{
     color: $dark-blue;
     background-color: $bg-main;
+    overflow-x: hidden;
 }
 button{
     border: none;
@@ -55,7 +60,7 @@ nav{
     padding: 2rem 3rem;
     &>ul{
         @include display();
-        gap: 30px;
+        gap: $size-lg;
         cursor: pointer;
     }
     & button{
@@ -73,24 +78,24 @@ nav{
 
 .first-section{
     @include display();
-    gap: 10px;
+    gap: $size-sm;
     padding: 3rem;
     // first div of the first section
     &>:first-child{
     @include display($direction: column, $align: flex-start);
-    gap: 20px;
+    gap: $size-md;
         &>h1{
             font-size: $font-lg;
             font-weight: 500;
         }
         &>p{
-            color: $grayish-blue;
+            color: $grey;
             text-wrap: balance;
         }
         // div wrapping both buttons
         &>div{
             @include display();
-            gap: 30px;
+            gap: $size-lg;
         }
         & button{
             padding: .7rem 1rem;
@@ -124,16 +129,34 @@ nav{
     }
 }
 
+// second section
 .second-section{
     @include display($direction: column);
+    gap: $size-md;
     padding: 3rem;
     &>.heading{
         @include display($direction: column);
         max-width: 500px;
         text-align: center;
-        gap: 10px;
+        gap: $size-sm;
         &>p{
-            color: $grayish-blue;
+            color: $grey;
+        }
+    }
+    &>.info{
+        @include display();
+        &>*{
+            padding: calc($size-md - 3px) $size-lg;
+            border-bottom: 1px solid $grey;
+            color: $grey;
+            cursor: pointer;
+            &.active{
+                color: $dark-blue;
+                border-bottom: 3px solid $soft-red;
+            }
+            &:hover{
+                color: $dark-blue;
+            }
         }
     }
 }
@@ -159,5 +182,8 @@ nav{
     }
     #hamburger-menu{
         display: block !important;
+    }
+    .second-section > .info{
+        @include display($direction: column);
     }
 }

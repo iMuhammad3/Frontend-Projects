@@ -9,6 +9,7 @@
 body {
   color: hsl(229, 31%, 21%);
   background-color: hsl(224, 100%, 98%);
+  overflow-x: hidden;
 }
 
 button {
@@ -69,7 +70,7 @@ nav #hamburger-menu {
   font-weight: 500;
 }
 .first-section > :first-child > p {
-  color: hsl(229, 8%, 60%);
+  color: hsl(229, 4%, 50%);
   text-wrap: balance;
 }
 .first-section > :first-child > div {
@@ -112,6 +113,7 @@ nav #hamburger-menu {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
   padding: 3rem;
 }
 .second-section > .heading {
@@ -124,7 +126,26 @@ nav #hamburger-menu {
   gap: 10px;
 }
 .second-section > .heading > p {
-  color: hsl(229, 8%, 60%);
+  color: hsl(229, 4%, 50%);
+}
+.second-section > .info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.second-section > .info > * {
+  padding: 17px 30px;
+  border-bottom: 1px solid hsl(229, 4%, 50%);
+  color: hsl(229, 4%, 50%);
+  cursor: pointer;
+}
+.second-section > .info > *.active {
+  color: hsl(229, 31%, 21%);
+  border-bottom: 3px solid hsl(0, 94%, 66%);
+}
+.second-section > .info > *:hover {
+  color: hsl(229, 31%, 21%);
 }
 
 @media (max-width: 1156px) {
@@ -145,5 +166,11 @@ nav #hamburger-menu {
   }
   #hamburger-menu {
     display: block !important;
+  }
+  .second-section > .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
