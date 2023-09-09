@@ -42,19 +42,37 @@ body{
     background-color: $bg-main;
     overflow-x: hidden;
 }
-body > *{
-    margin-bottom: 20px;
+// body > *{
+//     margin-bottom: 20px;
+// }
+h1,h2,h3,h4{
+    font-weight: 500;
+}
+h5,h6{
+    font-weight: 400;
 }
 button{
     border: none;
     background: transparent;
     cursor: pointer;
     font-size: inherit;
+    &:hover{
+        opacity: .9;
+    }
 }
 li{
     list-style: none;
+    &:hover{
+        text-decoration: underline;
+        opacity: .9;
+    }
 }
-
+input::placeholder{
+    color: #ccc;
+}
+input{
+    outline: none;
+}
 
 // Main
 
@@ -77,6 +95,10 @@ nav{
         display: none;
         cursor: pointer;
     }
+}
+
+main{
+    @include display($direction: column, $align: '');
 }
 
 .first-section{
@@ -203,7 +225,7 @@ nav{
 
 .third-section{
     padding: 2rem 2rem 4.3rem;
-    margin: 100px 0;
+    margin: 80px 0;
     @include display($direction: column);
     gap: $size-md;
     & p{
@@ -248,7 +270,7 @@ nav{
     @include display($direction: column);
     gap: $size-md;
     align-self: center;
-    margin: auto;
+    margin: 80px 0;
     width: min(450px, 70%);
     &>p{
         text-align: center;
@@ -287,6 +309,56 @@ nav{
     }
 }
 
+.fifth-section{
+    @include display($direction: column);
+    gap: $size-md;
+    background-color: $soft-blue;
+    color: $white;
+    min-height: 240px;
+    &>h2{
+        width: min(90%, 320px);
+        text-align: center;
+    }
+    &>div{
+        @include display();
+        gap: $size-sm;
+    }
+    & input[type=email]{
+        padding: .6rem 1rem;
+        width: 13rem;
+        border: none;
+        border-radius: $radius;
+        @include shadow($color: #3332);
+    }
+    & button{
+        background-color: $soft-red;
+        color: $white;
+        padding: .5rem .8rem;
+        border-radius: $radius;
+        @include shadow();
+    }
+}
+
+footer{
+    @include display($justify: space-around);
+    background-color: $dark-blue;
+    color: $white;
+    padding: 2rem;
+    &>div{
+        @include display();
+        gap: $size-md;
+    }
+    & li{
+        font-size: 14px;
+    }
+    // all li's and svg's inside footer except 'bookmark'
+    & li, & svg:not(div:first-child>svg){
+        cursor: pointer;
+        &:hover{
+            opacity: .9;
+        }
+    }
+}
 
 // media queries
 @media (max-width: 1156px){
@@ -331,5 +403,10 @@ nav{
                 transform: translateY(0) !important;
             }
         }
+    }
+    footer{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $size-md;
     }
 }
