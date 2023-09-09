@@ -42,6 +42,9 @@ body{
     background-color: $bg-main;
     overflow-x: hidden;
 }
+body > *{
+    margin-bottom: 20px;
+}
 button{
     border: none;
     background: transparent;
@@ -199,7 +202,8 @@ nav{
 }
 
 .third-section{
-    padding: 2rem;
+    padding: 2rem 2rem 4.3rem;
+    margin: 100px 0;
     @include display($direction: column);
     gap: $size-md;
     & p{
@@ -229,12 +233,57 @@ nav{
                 @include shadow();
             }
         }
+        // firefox extension
         &>:nth-child(2){
             transform: translateY($size-lg + 10px);
         }
+        // opera extension
         &>:nth-child(3){
             transform: translateY($size-lg * 2 + 10px);
         }
+    }
+}
+
+.fourth-section{
+    @include display($direction: column);
+    gap: $size-md;
+    align-self: center;
+    margin: auto;
+    width: min(450px, 70%);
+    &>p{
+        text-align: center;
+        color: $grey;
+    }
+    &>.accordion-wrapper{
+        margin: 30px 0;
+        cursor: pointer;
+        width: 100%;
+        &>.accordion{
+            border-bottom: 1px solid $grey;
+            padding: 1rem .5rem 1rem 0;
+        }
+        & .accordion-header{
+            @include display($justify: space-between);
+            // &:hover + .accordion-body{
+            //     max-height: 10px !important;
+            //     overflow: visible;
+            // }
+        }
+        & .accordion-body{
+            max-height: 0; 
+            overflow: hidden;
+            transition: max-height 0.3s ease; 
+        }
+        &>.accordion:first-child{
+            border-top: 1px solid $grey;
+        }
+    }
+    &>button{
+        background-color: $soft-blue;
+        color: $white;
+        padding: .5rem .8rem;
+        border-radius: $radius;
+        @include shadow();
     }
 }
 
