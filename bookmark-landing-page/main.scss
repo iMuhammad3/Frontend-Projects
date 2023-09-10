@@ -42,9 +42,7 @@ body{
     background-color: $bg-main;
     overflow-x: hidden;
 }
-// body > *{
-//     margin-bottom: 20px;
-// }
+
 h1,h2,h3,h4{
     font-weight: 500;
 }
@@ -67,6 +65,10 @@ li{
         opacity: .9;
     }
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
 input::placeholder{
     color: #ccc;
 }
@@ -76,7 +78,7 @@ input{
 
 // Main
 
-nav{
+body > nav{
     @include display($justify: space-between);
     padding: 2rem 3rem;
     &>ul{
@@ -282,19 +284,27 @@ main{
         width: 100%;
         &>.accordion{
             border-bottom: 1px solid $grey;
-            padding: 1rem .5rem 1rem 0;
+            padding: 1rem .5rem 0 0;
         }
         & .accordion-header{
             @include display($justify: space-between);
-            // &:hover + .accordion-body{
-            //     max-height: 10px !important;
-            //     overflow: visible;
-            // }
+        }
+        & svg{
+            transition: transform .4s;
+            &.rotate{
+                transform: rotate(180deg);
+            }   
         }
         & .accordion-body{
+            color: $grey;
+            margin: .5rem;
             max-height: 0; 
             overflow: hidden;
             transition: max-height 0.3s ease; 
+            &.showAccordionBody{
+                max-height: 150px !important;
+                overflow: visible;
+            }
         }
         &>.accordion:first-child{
             border-top: 1px solid $grey;
@@ -339,7 +349,7 @@ main{
     }
 }
 
-footer{
+main > footer{
     @include display($justify: space-around);
     background-color: $dark-blue;
     color: $white;
@@ -357,6 +367,81 @@ footer{
         &:hover{
             opacity: .9;
         }
+    }
+}
+
+// modal
+.modal-container{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: color-mix(in oklab, rgba(0, 0, 0, 0.8) 70%, $soft-blue);
+    padding: 2rem 0;
+    &>.modal{
+        color: $white;
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        @include display($direction: column,$align:'');
+        gap: $size-lg;
+        &>header{
+            @include display($justify: space-between);
+            &>#modalCloseBtn{
+                fill: $white;
+                cursor: pointer;
+            }
+        }
+        &>nav{
+            @include display($direction: column);
+            font-size: $size-md;
+            &>li{
+                padding: $size-md;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid;
+                cursor: pointer;
+            }
+            &>button{
+                margin-top: $size-md;
+                color: $white;
+                border: 2px solid;
+                width: 100%;
+                padding: $size-sm;
+                border-radius: $radius;
+                transition: background-color .4s, color .4s;
+                &:hover{
+                    background-color: $white;
+                    color: $dark-blue;
+                }
+            }
+        }
+        &>footer{
+            margin-top: auto;
+            @include display();
+            gap: $size-lg;
+            transform: translateY(-$size-lg);
+            &>svg{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// scroll to top button
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    right: $size-md;
+    bottom: $size-md;
+    background-color: $dark-blue;
+    padding: .8rem 1rem;
+    border-radius: 50%;
+    @include shadow(0, 4px, 10px, #0004);
+    &>svg{
+        transform: rotate(180deg);
+        fill: $white;
+        height: 1.3em;
     }
 }
 
@@ -387,7 +472,7 @@ footer{
 }
 
 @media (max-width: 720px){
-    nav > ul{
+    body > nav > ul{
         display: none;
     }
     #hamburger-menu{
@@ -404,9 +489,11 @@ footer{
             }
         }
     }
-    footer{
+    main > footer{
         flex-direction: column;
-        align-items: flex-start;
         gap: $size-md;
+        &>div:first-child{
+            flex-direction: column;
+        }
     }
 }
