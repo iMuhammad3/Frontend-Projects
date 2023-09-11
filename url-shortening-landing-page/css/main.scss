@@ -1,0 +1,71 @@
+// Imports
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
+// Variables
+$white: hsl(180, 38%, 97%);
+$cyan: hsl(180, 66%, 49%);
+$dark-violet: hsl(257, 27%, 26%);
+$red: hsl(0, 87%, 67%);
+$grey: hsl(0, 0%, 75%);
+$greyish-violet: hsl(257, 7%, 63%);
+$very-dark-blue: hsl(255, 11%, 22%);
+$very-dark-violet: hsl(260, 8%, 14%);
+
+$font-main: 18px;
+
+$size-sm: 9px; 
+$size-md: 18px; 
+$size-lg: 27px; 
+$size-xlg: 36px;
+
+$rounded-radius: 999px;
+
+// mixins
+@mixin display($display: flex, $direction: row, $justify: center, $align: center){
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// General
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    font-size: $font-main;
+}
+li{
+    list-style: none;
+}
+button{
+    background-color: transparent;
+    border: none;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+nav{
+    padding: calc($size-lg + 10px) calc($size-xlg + 2rem);
+}
+
+// main
+nav{
+    @include display($justify: space-between);
+    &>ul{
+        @include display();
+        gap: calc($size-md + $size-sm);
+        &>li{
+            color: $greyish-violet;
+        }
+        &>button{
+            background-color: $cyan;
+            color: $white;
+            padding: calc($size-sm - 5px) calc($size-md - 5px);
+            border-radius: $rounded-radius;
+        }
+    }
+}
