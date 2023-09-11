@@ -3,11 +3,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Poppins", sans-serif;
-}
-
-body {
-  font-size: 18px;
 }
 
 li {
@@ -19,10 +14,36 @@ button {
   border: none;
   font-size: inherit;
   cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 51, 0.0666666667);
 }
 
-nav {
-  padding: 37px calc(36px + 2rem);
+input {
+  border: none;
+  outline: none;
+}
+
+body {
+  font-size: 18px;
+  color: hsl(260, 8%, 14%);
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+nav,
+main > section {
+  padding: 37px 108px;
+}
+
+button.cyan {
+  background-color: hsl(180, 66%, 49%);
+  color: hsl(180, 38%, 97%);
+  padding: 7px 16px;
+}
+button.cyan.rounded-full {
+  border-radius: 999px;
+}
+button.cyan.rounded {
+  border-radius: 8px;
 }
 
 nav {
@@ -41,9 +62,57 @@ nav > ul {
 nav > ul > li {
   color: hsl(257, 7%, 63%);
 }
-nav > ul > button {
-  background-color: hsl(180, 66%, 49%);
-  color: hsl(180, 38%, 97%);
-  padding: 4px 13px;
-  border-radius: 999px;
+
+.first-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 144px;
+}
+.first-section > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+}
+.first-section > div > h1 {
+  line-height: 1.2;
+  font-size: 64px;
+}
+.first-section > div > p {
+  color: hsl(257, 7%, 63%);
+}
+.first-section > img {
+  width: 52%;
+  transform: translateX(120px) scale(1.1);
+}
+
+.second-section {
+  background-color: color-mix(in oklab, hsl(257, 7%, 63%), white 80%);
+}
+.second-section > .url-shortener-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  background-image: url("../images/bg-shorten-desktop.svg");
+  background-color: hsl(257, 27%, 26%);
+  padding: 36px 46.8px;
+  border-radius: 8px;
+  gap: 18px;
+  transform: translateY(-100px);
+}
+.second-section > .url-shortener-container > input {
+  padding: 18px 27px;
+  border-radius: 8px;
+  flex-grow: 1;
+  font-size: 18px;
+}
+.second-section > .stats {
+  text-align: center;
+  max-width: 450px;
+  margin: auto;
 }
