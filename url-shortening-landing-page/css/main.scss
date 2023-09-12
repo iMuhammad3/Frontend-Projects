@@ -12,6 +12,7 @@ $very-dark-blue: hsl(255, 11%, 22%);
 $very-dark-violet: hsl(260, 8%, 14%);
 
 $font-main: 18px;
+$font-sm: 14px;
 
 $size-sm: 9px; 
 $size-md: 18px; 
@@ -43,7 +44,7 @@ button{
     border: none;
     font-size: inherit;
     cursor: pointer;
-    box-shadow: 0 2px 10px #0031;
+    box-shadow: 0 2px 10px #0021;
 }
 input{
     border: none;
@@ -58,7 +59,8 @@ body{
     overflow-x: hidden;
 }
 nav,
-main > section{
+main > section,
+footer{
     padding: calc($size-lg + 10px) calc($size-xlg * 3);
 }
 
@@ -132,6 +134,9 @@ nav{
         max-width: 450px;
         margin-left: auto;
         margin-right: auto;
+        & p{
+            color: $greyish-violet;
+        }
     }
     &>.statistics-info{
         @include display($align: stretch);
@@ -153,6 +158,9 @@ nav{
                 transform: translateY(100px);
             }
         }
+        & small{
+            color: $greyish-violet;
+        }
         & img{
             position: absolute;
             top: -40px;
@@ -161,5 +169,34 @@ nav{
             padding: $size-md;
             border-radius: $rounded-full;
         }
+    }
+}
+
+.third-section{
+    background-color: $dark-violet;
+    background-image: url('../images/bg-boost-desktop.svg');
+    color: white;
+    text-align: center;
+    @include display($direction: column);
+    gap: $size-lg;
+    &>button{
+        padding: $size-sm $size-lg;
+    }
+}
+
+footer{
+    background-color: $very-dark-violet;
+    color: white;
+    @include display($align: flex-start, $justify: space-between);
+    & li{
+        font-size: $font-sm;
+    }
+    &>div:not(.icons){
+        @include display(flex, column, space-between, flex-start);
+        gap: $size-sm;
+    }
+    & .icons{
+        @include display();
+        gap: $size-md;
     }
 }
