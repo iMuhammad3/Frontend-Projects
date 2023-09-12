@@ -93,6 +93,9 @@ nav > ul > li {
 .second-section {
   background-color: color-mix(in oklab, hsl(257, 7%, 63%), white 80%);
 }
+.second-section > *:not(.url-shortener-container) {
+  margin-bottom: 117px;
+}
 .second-section > .url-shortener-container {
   display: flex;
   flex-direction: row;
@@ -114,5 +117,38 @@ nav > ul > li {
 .second-section > .stats {
   text-align: center;
   max-width: 450px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.second-section > .statistics-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+}
+.second-section > .statistics-info > div {
+  padding: 18px;
+  position: relative;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.0666666667);
+}
+.second-section > .statistics-info > div > * {
+  margin-top: 36px;
+}
+.second-section > .statistics-info > div:nth-child(2) {
+  transform: translateY(50px);
+  position: relative;
+}
+.second-section > .statistics-info > div:nth-child(3) {
+  transform: translateY(100px);
+}
+.second-section > .statistics-info img {
+  position: absolute;
+  top: -40px;
+  margin-top: 0;
+  background-color: hsl(260, 8%, 14%);
+  padding: 18px;
+  border-radius: 999px;
 }

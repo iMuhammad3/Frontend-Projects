@@ -109,6 +109,9 @@ nav{
 
 .second-section{
     background-color: color-mix(in oklab, $greyish-violet, white 80%);
+    &>*:not(.url-shortener-container){
+        margin-bottom: calc($size-xlg * 3 + $size-sm);
+    }
     &>.url-shortener-container{
         @include display($align: stretch);
         background-image: url('../images/bg-shorten-desktop.svg');
@@ -127,6 +130,36 @@ nav{
     &>.stats{
         text-align: center;
         max-width: 450px;
-        margin: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &>.statistics-info{
+        @include display($align: stretch);
+        gap: $size-md;
+        &>div{
+            padding: $size-md;
+            position: relative;
+            border-radius: $rounded;
+            background-color: white;
+            box-shadow: 0 2px 20px #0001;
+            &>*{
+                margin-top: $size-xlg;
+            }
+            &:nth-child(2){
+                transform: translateY(50px);
+                position: relative;
+            }
+            &:nth-child(3){
+                transform: translateY(100px);
+            }
+        }
+        & img{
+            position: absolute;
+            top: -40px;
+            margin-top: 0;
+            background-color: $very-dark-violet;
+            padding: $size-md;
+            border-radius: $rounded-full;
+        }
     }
 }
