@@ -53,6 +53,10 @@ input{
     border: none;
     outline: none;
 }
+a{
+    text-decoration: none;
+    color: inherit;
+}
 
 // General
 body{
@@ -91,6 +95,25 @@ nav{
             &:hover{
                 color: $very-dark-blue;
             }
+        }
+    }
+    & #navBarBtn{
+        display: none;
+        cursor: pointer;
+    }
+    & .nav-mobile{
+        @include display($display: none,$direction: column);
+        padding: 1rem;
+        background-color: $dark-violet;
+        color: white;
+        border-radius: 6px;
+        box-shadow: 0 2px 20px #0004;
+        &>a{
+            padding: .5rem;
+        }
+        &>button{
+            margin: .3rem;
+            width: 200px;
         }
     }
 }
@@ -229,11 +252,29 @@ footer{
     }
 }
 
+.hidden{
+    scale: 0;
+}
+
 @media (max-width: 920px) {
     nav,
     main > section,
     footer{
         padding: $size-lg;
+    }
+
+    nav{
+        align-items: flex-start;
+        & li, & button:not(.nav-mobile button){
+            display: none;
+        }
+        & .nav-mobile{
+            display: flex;
+            transform-origin: 115% 5%;
+        }
+        & #navBarBtn{
+            display: block;
+        }
     }
 
     .first-section{

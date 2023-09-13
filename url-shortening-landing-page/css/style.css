@@ -25,6 +25,11 @@ input {
   outline: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-size: 18px;
   color: hsl(260, 8%, 14%);
@@ -69,6 +74,28 @@ nav > ul > li {
 }
 nav > ul > li:hover {
   color: hsl(255, 11%, 22%);
+}
+nav #navBarBtn {
+  display: none;
+  cursor: pointer;
+}
+nav .nav-mobile {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: hsl(257, 27%, 26%);
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2666666667);
+}
+nav .nav-mobile > a {
+  padding: 0.5rem;
+}
+nav .nav-mobile > button {
+  margin: 0.3rem;
+  width: 200px;
 }
 
 .first-section {
@@ -235,11 +262,28 @@ footer svg {
   cursor: pointer;
 }
 
+.hidden {
+  scale: 0;
+}
+
 @media (max-width: 920px) {
   nav,
   main > section,
   footer {
     padding: 27px;
+  }
+  nav {
+    align-items: flex-start;
+  }
+  nav li, nav button:not(.nav-mobile button) {
+    display: none;
+  }
+  nav .nav-mobile {
+    display: flex;
+    transform-origin: 115% 5%;
+  }
+  nav #navBarBtn {
+    display: block;
   }
   .first-section {
     text-align: center;
