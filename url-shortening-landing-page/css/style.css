@@ -89,6 +89,9 @@ nav .nav-mobile {
   color: white;
   border-radius: 6px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2666666667);
+  position: absolute;
+  right: 80px;
+  z-index: 1;
 }
 nav .nav-mobile > a {
   padding: 0.5rem;
@@ -280,7 +283,12 @@ footer svg {
   }
   nav .nav-mobile {
     display: flex;
+    transform: translate(15%, 8%);
     transform-origin: 115% 5%;
+    transition: scale 0.2s;
+  }
+  nav .nav-mobile > a:hover {
+    color: hsl(180, 66%, 49%);
   }
   nav #navBarBtn {
     display: block;

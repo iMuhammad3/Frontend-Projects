@@ -108,6 +108,9 @@ nav{
         color: white;
         border-radius: 6px;
         box-shadow: 0 2px 20px #0004;
+        position: absolute;
+        right: 80px;
+        z-index: 1;
         &>a{
             padding: .5rem;
         }
@@ -252,10 +255,12 @@ footer{
     }
 }
 
+// utilities
 .hidden{
     scale: 0;
 }
 
+// media queries
 @media (max-width: 920px) {
     nav,
     main > section,
@@ -270,7 +275,12 @@ footer{
         }
         & .nav-mobile{
             display: flex;
+            transform: translate(15%, 8%);
             transform-origin: 115% 5%;
+            transition: scale .2s;
+            &>a:hover{
+                color: $cyan;
+            }
         }
         & #navBarBtn{
             display: block;
