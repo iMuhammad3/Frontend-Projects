@@ -45,6 +45,9 @@ button{
     font-size: inherit;
     cursor: pointer;
     box-shadow: 0 2px 10px #0021;
+    &:hover{
+        opacity: .8;
+    }
 }
 input{
     border: none;
@@ -84,6 +87,10 @@ nav{
         gap: calc($size-md + $size-sm);
         &>li{
             color: $greyish-violet;
+            cursor: pointer;
+            &:hover{
+                color: $very-dark-blue;
+            }
         }
     }
 }
@@ -104,7 +111,7 @@ nav{
         }
     }
     &>img{
-        width: 52%;
+        width: max(52%, 400px);
         transform: translateX(120px) scale(1.1);
     }
 }
@@ -188,15 +195,81 @@ footer{
     background-color: $very-dark-violet;
     color: white;
     @include display($align: flex-start, $justify: space-between);
+    gap: $size-md + $size-sm;
     & li{
         font-size: $font-sm;
+        cursor: pointer;
+        &:hover{
+            color: $cyan;
+        }
     }
-    &>div:not(.icons){
-        @include display(flex, column, space-between, flex-start);
-        gap: $size-sm;
+    &>.footer-nav{
+        @include display(flex, row, space-around, flex-start);
+        flex-grow: 1;
+        gap: $size-md;
+        &>div{
+            @include display($direction: column, $align: flex-start);
+            gap: $size-sm;
+        }
+        & ul{
+            @include display($direction: column, $align: flex-start);
+            gap: $size-sm - 6px
+        }
     }
     & .icons{
         @include display();
         gap: $size-md;
+        & svg:hover{
+            fill: $cyan;
+        }
+    }
+    & svg{
+        fill: #FFF;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 920px) {
+    nav,
+    main > section,
+    footer{
+        padding: $size-lg;
+    }
+
+    .first-section{
+        text-align: center;
+        flex-direction: column;
+        &>div{
+            align-items: center;
+        }
+        &>img{
+            order: -1;
+            width: min(90%, 400px);
+            transform: translateX(0) scale(1.1);
+        }
+    }
+
+    .second-section{
+        &>.url-shortener-container{
+            flex-direction: column;
+        }
+        &>.statistics-info{
+            flex-direction: column;
+        }
+    }
+
+    footer{
+        flex-direction: column;
+        align-items: center;
+        & .footer-nav{
+            flex-direction: column;
+            align-items: center;
+            &>div{
+                align-items: center;
+                & ul{
+                    align-items: center;
+                }
+            }
+        }
     }
 }

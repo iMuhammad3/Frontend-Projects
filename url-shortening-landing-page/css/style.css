@@ -16,6 +16,9 @@ button {
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 34, 0.0666666667);
 }
+button:hover {
+  opacity: 0.8;
+}
 
 input {
   border: none;
@@ -62,6 +65,10 @@ nav > ul {
 }
 nav > ul > li {
   color: hsl(257, 7%, 63%);
+  cursor: pointer;
+}
+nav > ul > li:hover {
+  color: hsl(255, 11%, 22%);
 }
 
 .first-section {
@@ -87,7 +94,7 @@ nav > ul > li {
   color: hsl(257, 7%, 63%);
 }
 .first-section > img {
-  width: 52%;
+  width: max(52%, 400px);
   transform: translateX(120px) scale(1.1);
 }
 
@@ -182,16 +189,36 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 27px;
 }
 footer li {
   font-size: 14px;
+  cursor: pointer;
 }
-footer > div:not(.icons) {
+footer li:hover {
+  color: hsl(180, 66%, 49%);
+}
+footer > .footer-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-grow: 1;
+  gap: 18px;
+}
+footer > .footer-nav > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
   gap: 9px;
+}
+footer > .footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 3px;
 }
 footer .icons {
   display: flex;
@@ -199,4 +226,51 @@ footer .icons {
   justify-content: center;
   align-items: center;
   gap: 18px;
+}
+footer .icons svg:hover {
+  fill: hsl(180, 66%, 49%);
+}
+footer svg {
+  fill: #FFF;
+  cursor: pointer;
+}
+
+@media (max-width: 920px) {
+  nav,
+  main > section,
+  footer {
+    padding: 27px;
+  }
+  .first-section {
+    text-align: center;
+    flex-direction: column;
+  }
+  .first-section > div {
+    align-items: center;
+  }
+  .first-section > img {
+    order: -1;
+    width: min(90%, 400px);
+    transform: translateX(0) scale(1.1);
+  }
+  .second-section > .url-shortener-container {
+    flex-direction: column;
+  }
+  .second-section > .statistics-info {
+    flex-direction: column;
+  }
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .footer-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .footer-nav > div {
+    align-items: center;
+  }
+  footer .footer-nav > div ul {
+    align-items: center;
+  }
 }
