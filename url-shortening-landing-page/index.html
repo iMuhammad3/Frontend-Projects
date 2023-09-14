@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Url Shortener</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <script type="module" src="js/script.js" defer></script>
 </head>
 <body>
 
@@ -45,8 +45,12 @@
 
         <section class="second-section">
             <div class="url-shortener-container">
-                <input type="text" placeholder="Shorten a link here...">
-                <button class="cyan rounded">Shorten It!</button>
+                <div>
+                    <input id="shortenUrlInput" type="text" placeholder="Shorten a link here...">
+                    <button id="shortenUrlBtn" class="cyan rounded">Shorten It!</button>
+                </div>
+                <small id="message" class="hidden">nivalid</small>
+                <div class="shortened-url-container"></div>
             </div>
             <div class="stats">
                 <h1>Advanced Statistics</h1>
