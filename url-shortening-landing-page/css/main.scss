@@ -176,7 +176,13 @@ nav{
                 background-color: white;
                 padding: $size-md;
                 border-radius: $rounded;
-                @include display($justify: space-between)
+                @include display($justify: space-between);
+                &>span{
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
             }
             & .shortened-url{
                 color: $cyan;
@@ -352,6 +358,11 @@ footer{
         }
         &>.statistics-info{
             flex-direction: column;
+        }
+        & .shortened-url-container{
+            &>div{
+                flex-direction: column !important;
+            }
         }
     }
 

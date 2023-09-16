@@ -172,6 +172,12 @@ nav .nav-mobile > button {
   justify-content: space-between;
   align-items: center;
 }
+.second-section > .url-shortener-container > .shortened-url-container > div > span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .second-section > .url-shortener-container > .shortened-url-container .shortened-url {
   color: hsl(180, 66%, 49%);
   font-size: 16px;
@@ -364,6 +370,9 @@ footer svg {
   }
   .second-section > .statistics-info {
     flex-direction: column;
+  }
+  .second-section .shortened-url-container > div {
+    flex-direction: column !important;
   }
   footer {
     flex-direction: column;
