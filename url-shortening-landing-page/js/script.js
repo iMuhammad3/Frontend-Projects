@@ -25,5 +25,5 @@ shortenUrlBtn.addEventListener('click', async () => {
     shortenUrlInput.classList.add('error')
     displayMessage(message, 'error', true, 'Please input a URL')
   }
+  shortenUrlInput.value = ''
 })
-

@@ -19,6 +19,9 @@ button {
 button:hover {
   opacity: 0.8;
 }
+button.copied {
+  background-color: hsl(257, 27%, 26%) !important;
+}
 
 input {
   border: none;

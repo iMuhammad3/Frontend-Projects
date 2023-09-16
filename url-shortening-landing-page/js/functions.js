@@ -31,6 +31,7 @@ export async function shortenUrl(longUrl) {
     }
 }
 
+// display a status message (whether url is invalid, etc)
 export function displayMessage(element, status = 'error', display = true, message){
     if(display){
         element.classList.remove('hidden')
@@ -42,8 +43,26 @@ export function displayMessage(element, status = 'error', display = true, messag
     }
 }
 
+// create the div containing the longUrl that was pasted, the shorturl and the copy button
 export async function createDiv(longUrl, shortUrl, shortUrlContainer) {
+  if (longUrl.length > 60) {
+    const urlArray = longUrl.split('');
+    urlArray.splice(60, longUrl.length - 60, '...');
+    longUrl = urlArray.join('');
+  }
     const div = document.createElement('div')
     div.innerHTML = await displayShortenedUrl(longUrl, shortUrl)
     shortUrlContainer.appendChild(div)
+    // copy the url to clipboard
+    const copyButton = div.querySelector('.copy-url-button')
+    copyButton.addEventListener('click', () => {
+      copyToClipboard(shortUrl)
+      // toggle active state of button
+      copyButton.classList.add('copied')
+      copyButton.textContent = 'Copied!'
+    })
+}
+
+function copyToClipboard(textToCopy) {
+  navigator.clipboard.writeText(textToCopy)
 }

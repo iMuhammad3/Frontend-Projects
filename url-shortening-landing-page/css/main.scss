@@ -55,6 +55,9 @@ button{
     &:hover{
         opacity: .8;
     }
+    &.copied{
+        background-color: $dark-violet !important;
+    }
 }
 input{
     border: none;
