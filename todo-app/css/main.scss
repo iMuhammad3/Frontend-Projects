@@ -1,0 +1,60 @@
+@import 'config';
+@import 'mixins';
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+
+
+// general
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    @include display-flex($align: flex-start);
+    min-height: 100dvh;
+    background-color: map-get($light-theme, very-light-grayish-blue);
+    color: map-get($light-theme, very-dark-grayish-blue);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+}
+input{
+    border: none;
+    outline: none;
+    font-family: inherit;
+}
+img{
+    max-width: 100%;
+}
+
+// main
+img{
+    position: absolute;
+    z-index: -1;
+}
+
+main{
+    @include display-flex(column, center, stretch);
+    gap: $lg;
+    margin-top: calc($xlg * 2);
+    width: min(92%, 500px);
+    // header
+    &>header{
+        @include display-flex($justify: space-between);
+        &>h1{
+            color: map-get($light-theme, very-light-gray);
+            letter-spacing: 10px;
+        }
+    }
+}
+.todo-container{
+    &>input{
+        width: 100%;
+        padding: $md $lg;
+        border-radius: $rounded;
+        &::placeholder{
+            color: map-get($light-theme, dark-grayish-blue);
+        }
+    }
+}
+
