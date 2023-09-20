@@ -1,11 +1,14 @@
 // Variables
 $rounded: 4px;
 $rounded-full: 999px;
+$base-font: 18px;
 $xsm: 8px;
 $sm: 12px;
 $md: 18px;
 $lg: 28px;
 $xlg: 40px;
+$blue: rgb(47, 95, 229);
+$shadow-lg: 0 2px 40px #0002;
 
 // Light Theme Colors
 $light-theme: (
@@ -26,8 +29,3 @@ $dark-theme: (
     very-dark-grayish-blue: hsl(233, 14%, 35%),
     very-dark-grayish-blue-hover: hsl(237, 14%, 26%)
 );
-
-// sizes
-$sizes: (
-    
-)

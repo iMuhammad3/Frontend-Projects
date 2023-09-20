@@ -27,6 +27,10 @@ img {
   max-width: 100%;
 }
 
+li {
+  list-style: none;
+}
+
 img {
   position: absolute;
   z-index: -1;
@@ -52,6 +56,13 @@ main > header > h1 {
   letter-spacing: 10px;
 }
 
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: "";
+  align-items: "";
+  gap: 18px;
+}
 .todo-container > input {
   width: 100%;
   padding: 18px 28px;
@@ -59,4 +70,59 @@ main > header > h1 {
 }
 .todo-container > input::placeholder {
   color: hsl(236, 9%, 61%);
+}
+.todo-container > .todos {
+  display: flex;
+  flex-direction: column;
+  justify-content: "";
+  align-items: "";
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 40px rgba(0, 0, 0, 0.1333333333);
+}
+.todo-container > .todos > .filters, .todo-container > .todos > li {
+  width: 100%;
+  background-color: hsl(0, 0%, 98%);
+  padding: 18px;
+}
+.todo-container > .todos > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  border-bottom: solid hsl(233, 11%, 84%);
+}
+.todo-container > .todos > li > .circle {
+  margin-top: -3px;
+  width: 18px;
+  height: 18px;
+  border: 0.4px solid rgb(136, 138, 148);
+  border-radius: 999px;
+}
+.todo-container > .todos > .filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: hsl(236, 9%, 61%);
+}
+.todo-container > .todos > .filters > div {
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.todo-container > .todos > .filters > div > span.active {
+  color: rgb(47, 95, 229);
+}
+.todo-container > .todos > .filters span:not(.todo-container > .todos > .filters > span:first-child) {
+  cursor: pointer;
+}
+.todo-container > .todos > .filters span:not(.todo-container > .todos > .filters > span:first-child):hover {
+  color: rgb(47, 95, 229);
 }
