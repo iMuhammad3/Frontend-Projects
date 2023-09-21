@@ -16,7 +16,9 @@ todoInput.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const inputValue = todoInput.querySelector('input').value
-    createTodo(inputValue)
+    if(inputValue){
+        createTodo(inputValue)
+    }
     todoInput.querySelector('input').value = ''
     // display number of items left at the bottom of list
     itemsLeftEl.textContent = `${document.querySelectorAll('.todos > li').length} items left`
