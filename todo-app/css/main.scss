@@ -73,10 +73,13 @@ main{
 .todo-container{
     @include display-flex(column, '', '');
     gap: $md;
-    &>input{
-        width: 100%;
-        padding: $md $lg;
-        border-radius: $rounded;
+    & form{
+
+        & input{
+            width: 100%;
+            padding: $md $lg;
+            border-radius: $rounded;
+        }
     }
     &>.todos{
         @include display-flex(column, '', '');
@@ -89,9 +92,15 @@ main{
         }
         &>li{
             @include display-flex($justify: flex-start);
+            transition: transform .5s, opacity .5s;
             gap: $sm;
             cursor: pointer;
             border-bottom: solid;
+            &>p{
+                max-width: 85%;
+                line-height: 1.4;
+                word-wrap: break-word;
+            }
             &>.circle{
                 margin-top: -3px;
                 width: 18px;
@@ -158,6 +167,12 @@ main{
             }
         }
     }
+}
+
+// utils
+.fade-out{
+    transform: translateX(700px);
+    opacity: 0.3;
 }
 
 @media (max-width: 750px) {

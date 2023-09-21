@@ -20,10 +20,13 @@
         }
     }
     & .todo-container{
-        &>input{
-            background-color: map-get($theme, bg-secondary);
-            &::placeholder{
-                color: map-get($theme, dark-grayish-blue);
+        & form{
+            & input{
+                color: map-get($theme, very-dark-grayish-blue);
+                background-color: map-get($theme, bg-secondary);
+                &::placeholder{
+                    color: map-get($theme, dark-grayish-blue);
+                }
             }
         }
         &>.todos{
