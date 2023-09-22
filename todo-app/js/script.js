@@ -3,6 +3,7 @@ const todoInput = document.getElementById('todo-input')
 const todoContainer = document.querySelector('.todo-container')
 const filters = document.querySelector('.filters')
 const itemsLeftEl = document.getElementById('items-left')
+const completedArr = []
 
 
 themeToggleBtn.addEventListener('click', () => {
@@ -16,12 +17,12 @@ todoInput.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const inputValue = todoInput.querySelector('input').value
-    if(inputValue){
+    if(inputValue.trim()){
         createTodo(inputValue)
     }
     todoInput.querySelector('input').value = ''
-    // display number of items left at the bottom of list
-    itemsLeftEl.textContent = `${document.querySelectorAll('.todos > li').length} items left`
+
+    updateItemsLeft(document.querySelectorAll('.todos > li'))
 })
 
 todoContainer.addEventListener('click', (e) => {
@@ -30,20 +31,27 @@ todoContainer.addEventListener('click', (e) => {
         element.parentElement.classList.add('fade-out')
         setTimeout(()=>{
             element.parentElement.remove()
-            itemsLeftEl.textContent = `${document.querySelectorAll('.todos > li').length} items left`
+            updateItemsLeft(document.querySelectorAll('.todos > li'))
         }, 500)
     } else if(element.tagName === 'LI'){
-        element.classList.toggle('completed')
+        checkAsComplete(element)
     } else if(element.tagName === 'P' || element.classList.contains('circle')){
-        element.parentElement.classList.toggle('completed')
+        checkAsComplete(element.parentElement)
     }
 })
 
-// filters.addEventListener('click', (e) => {
-//     switch (e.target.id){
-//         case 'filter-all' : 
-//     }
-// })
+filters.addEventListener('click', (e) => {
+    switch (e.target.id){
+        case 'filter-completed' : filter(completedArr, e.target)
+            break;
+        case 'filter-all' : filter(Array.from(document.querySelectorAll('.todos li')), e.target)
+            break;
+        case 'filter-active' : 
+            const array = Array.from(document.querySelectorAll('.todos li'))
+            const filtered = array.filter(item => !completedArr.includes(item))
+            filter(filtered, e.target);
+    }
+})
 
 
 function createTodo(text){
@@ -56,3 +64,43 @@ function createTodo(text){
     `
     todosEl.insertBefore(li, document.querySelector('.filters'))
 }
+
+function checkAsComplete(element){
+    if(element.classList.contains('completed')){
+        element.classList.remove('completed')
+        completedArr.splice(completedArr.indexOf(element), 1)
+    } else {
+        element.classList.add('completed')
+        completedArr.push(element)
+    }
+    console.log(completedArr)
+}
+
+function filter(array, element){
+    const lis = Array.from(document.querySelectorAll('.todos li'));
+
+    lis.forEach(li => {
+        li.style.display = 'none';
+    });
+
+    array.forEach(completedItem => {
+        completedItem.style.display = 'flex';
+    });
+
+    // add 'active' class
+    document.querySelectorAll('.filters > div > span').forEach(span => {
+        span.classList.remove('active')
+    })
+    element.classList.add('active')
+
+    updateItemsLeft(array)
+}
+
+function updateItemsLeft(itemsLeft){
+    itemsLeftEl.textContent = `${itemsLeft.length} items left`
+}
+
+// todo
+// filters
+// localStorage
+// drag drop
