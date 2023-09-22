@@ -32,6 +32,7 @@ todoContainer.addEventListener('click', (e) => {
         setTimeout(()=>{
             element.parentElement.remove()
             updateItemsLeft(document.querySelectorAll('.todos > li'))
+            completedArr.splice(completedArr.indexOf(element), 1)
         }, 500)
     } else if(element.tagName === 'LI'){
         checkAsComplete(element)
@@ -41,15 +42,29 @@ todoContainer.addEventListener('click', (e) => {
 })
 
 filters.addEventListener('click', (e) => {
+    const allLists = document.querySelectorAll('.todos li')
     switch (e.target.id){
         case 'filter-completed' : filter(completedArr, e.target)
             break;
-        case 'filter-all' : filter(Array.from(document.querySelectorAll('.todos li')), e.target)
+        case 'filter-all' : filter(Array.from(allLists), e.target)
             break;
         case 'filter-active' : 
-            const array = Array.from(document.querySelectorAll('.todos li'))
+            const array = Array.from(allLists)
             const filtered = array.filter(item => !completedArr.includes(item))
             filter(filtered, e.target);
+            break;
+        case 'filter-clear' : 
+            completedArr.length = 0
+            allLists.forEach(list => {
+                if(list.classList.contains('completed')){
+                    list.classList.add('fade-out')
+                    setTimeout(()=>{
+                        list.remove()
+                    }, 500)
+                }
+            })
+            updateItemsLeft(allLists)
+            break;
     }
 })
 
@@ -97,10 +112,10 @@ function filter(array, element){
 }
 
 function updateItemsLeft(itemsLeft){
-    itemsLeftEl.textContent = `${itemsLeft.length} items left`
+    itemsLeftEl.textContent = `${itemsLeft.length} items`
 }
 
 // todo
-// filters
+// filters ✓
 // localStorage
 // drag drop
