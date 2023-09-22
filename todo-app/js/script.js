@@ -5,6 +5,18 @@ const filters = document.querySelector('.filters')
 const itemsLeftEl = document.getElementById('items-left')
 const completedArr = []
 
+document.addEventListener('DOMContentLoaded', () => {
+    const todoData = JSON.parse(localStorage.getItem('todoData')) || []
+
+    todoData.forEach(todo => {
+        createTodo(todo.text, todo.completed)
+    })
+
+    const allLists = document.querySelectorAll('.todos li')
+    updateItemsLeft(allLists)
+    const activeFilter = filters.querySelector('active')
+    if(activeFilter) filter(Array.from(allLists), activeFilter)
+})
 
 themeToggleBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark')
@@ -23,6 +35,7 @@ todoInput.addEventListener('submit', (e) => {
     todoInput.querySelector('input').value = ''
 
     updateItemsLeft(document.querySelectorAll('.todos > li'))
+    saveTodo()
 })
 
 todoContainer.addEventListener('click', (e) => {
@@ -64,14 +77,19 @@ filters.addEventListener('click', (e) => {
                 }
             })
             updateItemsLeft(allLists)
+            saveTodo()
             break;
     }
 })
 
 
-function createTodo(text){
+// functions
+function createTodo(text, completed){
     const todosEl = document.querySelector('.todos')
     const li = document.createElement('li')
+    if(completed){
+        li.classList.add('completed')
+    }
     li.innerHTML = `
         <div class="circle"></div>
         <p>${text}</p>
@@ -88,7 +106,6 @@ function checkAsComplete(element){
         element.classList.add('completed')
         completedArr.push(element)
     }
-    console.log(completedArr)
 }
 
 function filter(array, element){
@@ -109,13 +126,25 @@ function filter(array, element){
     element.classList.add('active')
 
     updateItemsLeft(array)
+    saveTodo()
 }
 
 function updateItemsLeft(itemsLeft){
     itemsLeftEl.textContent = `${itemsLeft.length} items`
 }
 
+function saveTodo(){
+    const todoData = Array.from(document.querySelectorAll('.todos li')).map(item => {
+        return {
+            text: item.querySelector('p').textContent,
+            completed: item.classList.contains('completed')
+        }
+    })
+    localStorage.setItem('todoData', JSON.stringify(todoData))
+}
+
 // todo
 // filters ✓
-// localStorage
+// localStorage ✓
 // drag drop
+// testing
