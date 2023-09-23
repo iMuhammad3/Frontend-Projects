@@ -174,6 +174,9 @@ main{
     transform: translateX(700px);
     opacity: 0.3;
 }
+.dragging{
+    opacity: .5;
+}
 
 @media (max-width: 750px) {
     $base-font: 16px;
