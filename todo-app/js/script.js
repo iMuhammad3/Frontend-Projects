@@ -6,6 +6,9 @@ const itemsLeftEl = document.getElementById('items-left')
 const completedArr = []
 
 document.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('darkMode') === 'true'){
+        document.body.classList.add('dark')
+    }
     const todoData = JSON.parse(localStorage.getItem('todoData')) || []
 
     todoData.forEach(todo => {
@@ -23,6 +26,8 @@ themeToggleBtn.addEventListener('click', () => {
     document.querySelectorAll('main header svg').forEach(svg => {
         svg.classList.toggle('hidden')
     })
+    // sets darkmode to true if body has class name dark
+    localStorage.setItem('darkMode', document.body.classList.contains('dark'))
 })
 
 todoInput.addEventListener('submit', (e) => {
@@ -35,7 +40,7 @@ todoInput.addEventListener('submit', (e) => {
     todoInput.querySelector('input').value = ''
 
     updateItemsLeft(document.querySelectorAll('.todos > li'))
-    saveTodo()
+    updateLocalStorage()
 })
 
 todoContainer.addEventListener('click', (e) => {
@@ -46,6 +51,7 @@ todoContainer.addEventListener('click', (e) => {
             element.parentElement.remove()
             updateItemsLeft(document.querySelectorAll('.todos > li'))
             completedArr.splice(completedArr.indexOf(element), 1)
+            updateLocalStorage()
         }, 500)
     } else if(element.tagName === 'LI'){
         checkAsComplete(element)
@@ -77,7 +83,7 @@ filters.addEventListener('click', (e) => {
                 }
             })
             updateItemsLeft(allLists)
-            saveTodo()
+            updateLocalStorage()
             break;
     }
 })
@@ -106,6 +112,7 @@ function checkAsComplete(element){
         element.classList.add('completed')
         completedArr.push(element)
     }
+    updateLocalStorage()
 }
 
 function filter(array, element){
@@ -126,14 +133,14 @@ function filter(array, element){
     element.classList.add('active')
 
     updateItemsLeft(array)
-    saveTodo()
+    updateLocalStorage()
 }
 
 function updateItemsLeft(itemsLeft){
     itemsLeftEl.textContent = `${itemsLeft.length} items`
 }
 
-function saveTodo(){
+function updateLocalStorage(){
     const todoData = Array.from(document.querySelectorAll('.todos li')).map(item => {
         return {
             text: item.querySelector('p').textContent,
