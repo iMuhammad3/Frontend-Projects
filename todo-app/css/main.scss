@@ -97,9 +97,11 @@ main{
             cursor: pointer;
             border-bottom: solid;
             &>p{
-                max-width: 85%;
+                // max-width: 100%;
+                flex-basis: 79%;
                 line-height: 1.4;
                 word-wrap: break-word;
+                hyphens: auto;
             }
             &>.circle{
                 margin-top: -3px;
@@ -143,7 +145,6 @@ main{
                 width: 30px;
                 height: 30px;
                 padding: 6px;
-                background-color: red;
                 margin-left: auto;
                 transition: opacity .2s;
             }

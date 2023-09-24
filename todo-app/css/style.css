@@ -180,9 +180,10 @@ main > p {
   border-bottom: solid;
 }
 .todo-container > .todos > li > p {
-  max-width: 85%;
+  flex-basis: 79%;
   line-height: 1.4;
   word-wrap: break-word;
+  hyphens: auto;
 }
 .todo-container > .todos > li > .circle {
   margin-top: -3px;
@@ -228,7 +229,6 @@ main > p {
   width: 30px;
   height: 30px;
   padding: 6px;
-  background-color: red;
   margin-left: auto;
   transition: opacity 0.2s;
 }
