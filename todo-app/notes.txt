@@ -1,0 +1,8 @@
+Adjustments:
+- svg icon for dark mode doesnt change in localStorage ✓
+- remove button needs more padding ✓
+- filters also need some padding ✓
+- background img is repeating on mobile ✓
+- hover states for filters are confusing on mobile ✓
+- lighter colors for text on dark mode ✓
+- long todos look bad on mobile

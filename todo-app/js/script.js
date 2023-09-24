@@ -9,6 +9,9 @@ const completedArr = []
 document.addEventListener('DOMContentLoaded', () => {
     if(localStorage.getItem('darkMode') === 'true'){
         document.body.classList.add('dark')
+        document.querySelectorAll('main header svg').forEach(svg => {
+            svg.classList.toggle('hidden')
+        })
     }
     const todoData = JSON.parse(localStorage.getItem('todoData')) || []
 
