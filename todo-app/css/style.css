@@ -180,7 +180,7 @@ main > p {
   border-bottom: solid;
 }
 .todo-container > .todos > li > p {
-  max-width: 79%;
+  max-width: 76%;
   line-height: 1.4;
   word-wrap: break-word;
   hyphens: auto;
