@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  background: -o-radial-gradient(rgb(243, 252, 255), rgb(218, 218, 240));
+  background: radial-gradient(rgb(243, 252, 255), rgb(218, 218, 240));
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  color: color-mix(in oklab, midnightblue, #00000a);
+}
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-weight: 600;
+}
+body svg:not(#settingBtn) {
+  font-size: 40px;
+}
+body button {
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  background: transparent;
+}
+body button#restartBtn {
+  font-size: 20px;
+  padding: 0.3rem 1rem;
+  background: -webkit-gradient(linear, left bottom, right top, from(rgb(30, 53, 100)), to(rgb(17, 33, 112)));
+  background: -o-linear-gradient(bottom left, rgb(30, 53, 100), rgb(17, 33, 112));
+  background: linear-gradient(to top right, rgb(30, 53, 100), rgb(17, 33, 112));
+  color: #eee;
+}
+body button:hover {
+  opacity: 0.9;
+}
+body button:disabled {
+  cursor: not-allowed;
+}
+body .container {
+  position: relative;
+  width: 80%;
+  max-width: 650px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 2rem;
+  border: 1px solid midnightblue;
+}
+body .container .scores {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  padding: 1rem;
+}
+body .container .scores > div {
+  padding: 1rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+body .container #settingBtn {
+  fill: #eee;
+  stroke-width: 20px;
+  stroke: black;
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  font-size: 25px;
+  padding: 0.3rem;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  -o-transition: -o-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s, -o-transform 0.4s;
+}
+body .container #settingBtn:hover {
+  -webkit-transform: rotate(90deg);
+       -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+body .modal-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+body .modal-container .modal {
+  position: relative;
+  padding: 1.5rem;
+  background: #eee;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 3px 20px rgba(0, 0, 34, 0.1333333333);
+          box-shadow: 0 3px 20px rgba(0, 0, 34, 0.1333333333);
+}
+body .modal-container .modal > span.closeBtn {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.7rem;
+  cursor: pointer;
+  font-size: 25px;
+}
+body .modal-container .modal .rounds-select {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 0.4rem;
+}
+body .modal-container .modal .rounds-select select {
+  cursor: pointer;
+}

@@ -3,6 +3,7 @@ const todoInput = document.getElementById('todo-input')
 const todoContainer = document.querySelector('.todo-container')
 const filters = document.querySelector('.filters')
 const itemsLeftEl = document.getElementById('items-left')
+const uncompleteTodosBtn = document.getElementById('uncompleteTodosBtn')
 const todosEl = document.querySelector('.todos');
 const completedArr = []
 
@@ -91,6 +92,14 @@ filters.addEventListener('click', (e) => {
             })
             break;
     }
+})
+
+uncompleteTodosBtn.addEventListener('click', () => {
+    document.querySelectorAll('.todos li').forEach(li => {
+        li.classList.remove('completed')
+    })
+    completedArr.length = 0
+    updateLocalStorage()
 })
 
 

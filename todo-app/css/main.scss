@@ -33,6 +33,14 @@ img{
 li{
     list-style: none;
 }
+button{
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+}
 
 // main
 
@@ -157,6 +165,7 @@ main{
         &>.filters{
             @include display-flex($justify: space-between);
             font-size: calc($base-font - 4px);
+            border-bottom: solid;
             &>div{
                 font-weight: 700;
                 @include display-flex();
@@ -173,8 +182,14 @@ main{
                 }
             }
         }
+        &>button{
+            padding: $sm;
+            &:hover{
+                color: color-mix(in oklab, $blue 90%, white);
+            }
+        }
     }
-}
+} 
 
 // utils
 .fade-out{

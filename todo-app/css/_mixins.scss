@@ -43,7 +43,12 @@
                 }
             }
             &>.filters{
-                color: map-get($light-theme, dark-grayish-blue);
+                color: map-get($theme, dark-grayish-blue);
+                border-bottom-color: map-get($theme, light-grayish-blue);
+            }
+            &>button{
+                background-color: map-get($theme, bg-secondary);
+                color: map-get($theme, dark-grayish-blue);
             }
         }
     }

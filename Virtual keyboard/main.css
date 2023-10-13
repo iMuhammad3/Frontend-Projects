@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-image: -webkit-gradient(linear, left top, right top, from(rgb(60, 106, 245)), to(rgb(52, 139, 245)));
+  background-image: -o-linear-gradient(left, rgb(60, 106, 245), rgb(52, 139, 245));
+  background-image: linear-gradient(to right, rgb(60, 106, 245), rgb(52, 139, 245));
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.keyboard {
+  width: 440px;
+  height: 290px;
+  background-color: rgb(20, 38, 195);
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2666666667);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2666666667);
+  border-radius: 3px;
+  padding: 0.6rem;
+  color: #eee;
+}
+
+.inputed-values {
+  min-height: 26%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0.7rem;
+  font-size: 28px;
+  border-bottom: 1px solid rgb(157, 157, 182);
+}
+
+.key {
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  border-radius: 3px;
+  background-color: color-mix(in oklab, rgb(20, 38, 195), rgba(0, 0, 0, 0.2666666667));
+}
+
+.keys > div {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+}
