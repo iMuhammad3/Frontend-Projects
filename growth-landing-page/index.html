@@ -9,8 +9,19 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="index.js" type="text/babel" data-type="module" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "light-grey": "#D2D5DA"
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="flex justify-center items-center min-h-screen">
+<body class="min-h-screen">
     
     <div id="root"></div>
 
