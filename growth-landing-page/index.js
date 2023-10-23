@@ -3,11 +3,15 @@ const container = document.getElementById('root')
 const root = ReactDOM.createRoot(container)
 root.render(<App />)
 
+
 function App(){
     return (
         <>
             <Header />
             <Hero />
+            <VideoSection />
+            <hr className={utilities.colors.lightGrey} />
+            <TestimonialSection />
         </>
     )
 }
@@ -18,16 +22,17 @@ const utilities = {
         sections: "py-6 px-10",
     },
     colors: {
-        lightGrey: "light-grey"
+        lightGrey: "bg-light-grey",
+        dark: "bg-dark",
+        blue500: "bg-blue-500",
     }
 }
 
-const hamburgerMenu = (<svg className="" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>)
 
 // HEADER 
 function Header(){
+    const hamburgerMenu = (<svg className="" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>)
     const [isNavShown, setIsNavShown] = React.useState(false)
-    console.log(isNavShown)
     const navigationItems = [
         "Features",
         "About us",
@@ -44,10 +49,10 @@ function Header(){
             <ul className={
                     `flex flex-col gap-2 items-center absolute inset-0 bg-white
                     md:relative md:flex md:flex-row md:bg-transparent
-                    ${!isNavShown && "hidden"} 
+                    ${isNavShown ? "" : "hidden"} 
                     `}>
                 <Button content="&times;" classes="text-xl md:hidden" handleClick={() => setIsNavShown(prev => !prev)}/>
-                {navigationItems.map((item, i) => <Li key={i} content={item} />)}
+                {navigationItems.map((item, i) => <Li key={i} content={item} clickable={true} />)}
                 <Button content="Login" bgColor={lightGrey} />
             </ul>
             <Button 
@@ -70,7 +75,7 @@ function Hero(){
                     <H1 content="A powerful solution to grow your startup. Fast!" size="text-4xl" />
                     <p>Organise, collaborate, and track progress seamlessly with our one-stop-shop startup growth tool.</p>
                     <div className="flex flex-col gap-2 md:flex-row">
-                        <Button content="Get Started" bgColor="blue-500" classes="text-white" />
+                        <Button content="Get Started" bgColor={utilities.colors.blue500} classes="text-white" />
                         <Button content="Book a demo" bgColor={utilities.colors.lightGrey} />
                     </div>
                 </div>
@@ -94,24 +99,86 @@ function Hero(){
     )
 }
 
-function Li({content}){
+function VideoSection(){
     return (
-        <li className={utilities.classNames.clickables + " hover:bg-blue-100"}>
+        <section className={utilities.colors.dark + " text-white flex flex-col gap-4 p-16 text-center md:items-center"}>
+            <H1 content="See how it works and get started in less than 2 minutes" classes="max-w-md self-center" />
+            <i>TODO: add video</i>
+            <Button content="Get Started" bgColor={utilities.colors.blue500} />
+        </section>
+    )
+}
+
+function TestimonialSection(){
+    const Testimonials = [
+        {
+            testimonial: "Our business has seen a significant increase in productivity since we started using the Growth app.",
+            user: "Katherine Smith",
+            company: "Capodopera",
+        },
+        {
+            testimonial: "As a small business owner, it's important to have a tool that can help me keep track of everything. The Growth app has been a lifesaver for me, allowing me to manage my contacts, schedule appointments, and track progress all in one place.",
+            user: "Jonathan Lee",
+            company: "Red Bolt",
+        },
+        {
+            testimonial: "The dashboards and reporting feature has provided valuable insights into our performance and helped us make data-driven decisions. It's a game changer for us.",
+            user: "David Wilson",
+            company: "Slide",
+        },
+    ]
+    return (
+        <section className={utilities.colors.dark + " text-white flex flex-col gap-8 p-16"}>
+            <H1 
+            content="Don't just take our word for it, see the success stories from businesses just like yours."
+            classes="md:w-1/2"
+            />
+            <ul className="flex flex-col items-start gap-4 md:flex-row">
+                {
+                    Testimonials.map(t => {
+                        const content = (
+                        <>
+                            <q>{t.testimonial}</q>
+                            <div className="flex flex-col">
+                                <b>{t.user}</b>
+                                <small>{t.company}</small>
+                            </div>
+                        </>
+                        )
+                        return <Li content={content} classes="bg-white text-black rounded-lg p-6 max-w-[406px] flex flex-col gap-6" />
+                    })
+                }
+            </ul>
+        </section>
+    )
+}
+
+function PricingSection(){
+    return (
+        <section>
+            
+        </section>
+    )
+}
+
+function Li({content, clickable = false, classes = ""}){
+    return (
+        <li className={(clickable ? `${utilities.classNames.clickables} hover:bg-blue-100 ` : '') + classes}>
             {content}
         </li>
     )
 }
-function Button({content, bgColor="transparent", classes, handleClick}){
+function Button({content, bgColor="bg-transparent", classes, handleClick}){
     return (
         <button 
-        className={`hover:scale-[.99] bg-${bgColor} ${utilities.classNames.clickables} ${classes}`} 
+        className={`hover:scale-[.99] ${bgColor} ${utilities.classNames.clickables} ${classes}`} 
         onClick={handleClick}>
             {content}
         </button>
     )
 }
-function H1({size="text-2xl", content}){
-    return <h1 className={`${size} font-bold`}>{content}</h1>
+function H1({size="text-3xl", content, classes=""}){
+    return <h1 className={`${size} font-bold ${classes}`}>{content}</h1>
 }
 function Image({src, classes}){
     return <img className={classes + " border rounded"} src={src} alt="" />
