@@ -250,18 +250,62 @@ function FAQSection(){
             </nav>
         )
     }
-    function Accordion(){
-        return (
-            <div>
+    function AccordionWrapper(){
+        const FAQs = [
+            {
+                question: "How does the contact management feature help me keep track of clients and partners?",
+                answer: "Keep track of your contacts, gain valuable insights, analyse live data and performance metrics."
+            },
+            {
+                question: "Can I customize the dashboards and reporting feature to display the metrics that are most important to my business?",
+                answer: "Keep track of your contacts, gain valuable insights, analyse live data and performance metrics."
+            },
+            {
+                question: "How does the task management feature help me delegate tasks to my team and track progress?",
+                answer: "Keep track of your contacts, gain valuable insights, analyse live data and performance metrics."
+            },
+            {
+                question: "Can I collaborate with my team in real-time using all tools?",
+                answer: "Keep track of your contacts, gain valuable insights, analyse live data and performance metrics."
+            },
+            {
+                question: "Is the app available on all devices?",
+                answer: "Keep track of your contacts, gain valuable insights, analyse live data and performance metrics."
+            },
+            {
+                question: "How does the app help me stay compliant when working with freelancers and contractors?",
+                answer: "Keep track of your contacts, gain valuable insights, analyse live data and performance metrics."
+            },
+        ]
+        function Accordion({question, answer}){
+            const [active, setActive] = React.useState(false)
 
-            </div>
+            function showBody(){
+                setActive(prev => !prev)
+            }
+
+            return (
+                <div className="border-b-2">
+                    <header onClick={showBody} className="flex items-start justify-between gap-6 py-4 cursor-pointer">
+                        <h3 className="w-96 md:w-[550px]">{question}</h3>
+                        <span className={`text-2xl transition ${active && 'rotate-45'}`}>+</span>
+                    </header>
+                    {active && <div className="pb-4 px-2 w-96 text-sm text-gray-700 md:w-[550px]">{answer}</div>}
+                </div>
+            )
+        }
+
+        return (
+            <ul>
+                {FAQs.map((faq, i) => <Accordion active={true} question={faq.question} answer={faq.answer} />)}
+            </ul>
         )
     }
     return (
         <section className={utilities.classNames.smallSections + ` flex flex-col items-center gap-5`}>
             <H1 content="Frequently asked questions" />
             <Nav />
-            <Accordion />
+            <AccordionWrapper />
         </section>
     )
 }
