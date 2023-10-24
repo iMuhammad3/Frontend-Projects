@@ -14,6 +14,7 @@ function App(){
             <TestimonialSection />
             <PricingSection />
             <FAQSection />
+            <Footer />
         </>
     )
 }
@@ -233,7 +234,7 @@ function PricingSection(){
             </div>
             <div className="text-center flex flex-col gap-2">
                 <p>All prices are in USD and charged per month with applicable taxes added at checkout.</p>
-                <a>View features</a>
+                <a className="cursor-pointer">View features</a>
             </div>
         </section>
     )
@@ -241,7 +242,6 @@ function PricingSection(){
 
 function FAQSection(){
     function Nav(){
-        const [activeBtn, setActiveBtn] = React.useState(true)
         return (
             <nav className={`${utilities.colors.lightGrey} rounded-md p-1`}>
                 <Button content="All" bgColor={utilities.colors.blue500} />
@@ -303,10 +303,54 @@ function FAQSection(){
     }
     return (
         <section className={utilities.classNames.smallSections + ` flex flex-col items-center gap-5`}>
-            <H1 content="Frequently asked questions" />
+            <H1 content="Frequently asked questions" classes="text-center" />
             <Nav />
             <AccordionWrapper />
         </section>
+    )
+}
+
+function Footer(){
+    return (
+        <footer className={`${utilities.colors.dark+" "+utilities.classNames.bigSections} flex flex-col gap-5`}>
+            <H1 content="Growth" classes="text-white" />
+            <div className="flex flex-col bg-white p-4 rounded-md">
+                <h4 className="text-lg font-semibold">Subscribe to newsletter</h4>
+                <p>Subscribe now to receive  tips on how to take your business to the next level.</p>
+                <div className="mt-4 flex gap-2">
+                    <input className="outline-none p-2 border-2 rounded-md" type="email" placeholder="Enter your email" />
+                    <Button bgColor={utilities.colors.blue500} content="Subscribe" />
+                </div>
+            </div>
+            <div className="text-white flex flex-wrap justify-between gap-4
+            [&>section]:flex [&>section]:flex-col
+            [&>section]:gap-3
+            [&_h2]:text-lg
+            [&_a]:text-gray-400 [&_a]:cursor-pointer
+            hover:[&_a]:text-white
+            ">
+                <section>
+                    <h2>Company</h2>
+                    <a>About</a>
+                    <a>Our Process</a>
+                    <a>Join our team</a>
+                </section>
+                <section>
+                    <h2>Resources</h2>
+                    <a>News</a>
+                    <a>Research</a>
+                    <a>Recent Projects</a>
+                </section>
+                <section>
+                    <h2>Contact</h2>
+                    <a>hello@growthapp.com</a>
+                </section>
+            </div>
+            <div className="flex gap-4 text-gray-400">
+                <i>//Todo: add linkedln logo</i>
+                <i>//Todo: add twitter logo</i>
+            </div>
+        </footer>
     )
 }
 
