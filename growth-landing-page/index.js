@@ -13,6 +13,7 @@ function App(){
             <hr className={utilities.colors.lightGrey} />
             <TestimonialSection />
             <PricingSection />
+            <FAQSection />
         </>
     )
 }
@@ -78,7 +79,7 @@ function Hero(){
                     <H1 content="A powerful solution to grow your startup. Fast!" size="text-4xl" />
                     <p>Organise, collaborate, and track progress seamlessly with our one-stop-shop startup growth tool.</p>
                     <div className="flex flex-col gap-2 md:flex-row">
-                        <Button content="Get Started" bgColor={colors.blue500} classes="text-white" />
+                        <Button content="Get Started" bgColor={colors.blue500} />
                         <Button content="Book a demo" bgColor={colors.lightGrey} />
                     </div>
                 </div>
@@ -105,7 +106,7 @@ function Hero(){
 function VideoSection(){
     const {colors, classNames} = utilities
     return (
-        <section className={`${colors.dark} ${classNames.bigSections}  text-white flex flex-col gap-4 text-center md:items-center`}>
+        <section className={`${colors.dark} ${classNames.bigSections} text-white flex flex-col gap-4 text-center md:items-center`}>
             <H1 content="See how it works and get started in less than 2 minutes" classes="max-w-md self-center" />
             <i>TODO: add video</i>
             <Button content="Get Started" bgColor={colors.blue500} />
@@ -189,8 +190,8 @@ function PricingSection(){
         const {lightGrey, dark} = utilities.colors
         return (
             <div className={
-                `${free ? `${lightGrey} ` : `${dark} text-white`} 
-                w-[360px] p-8 rounded-xl flex flex-col gap-4`
+                `${free ? `${lightGrey} ` : `${dark} text-white fill-white`} 
+                w-[340px] p-8 rounded-xl flex flex-col gap-5`
                 }>
                 <h2 className="text-2xl">{name}</h2>
                 <p>
@@ -201,26 +202,66 @@ function PricingSection(){
                     <small>{free ? "* No credit card required" : <sub>/month</sub>}</small>
                 </div>
                 <hr />
-                <ul>
+                <ul className="flex flex-col gap-5">
                     {!free && <p>Everything from the free plan plus:</p>}
-                    {benefits.map((b, i) => <Li key={i} content={b} />)}
+                    {benefits.map((b, i) => {
+                        return (
+                                <Li key={i} content={
+                                    <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                                    <span className="w-full leading-4">{b}</span>
+                                    </>
+                                } classes="flex gap-3" />
+                                )
+                    })}
                 </ul>
-                <Button content="Get Started" bgColor={utilities.colors.blue500} classes="text-white" />
+                <Button content="Get Started" bgColor={utilities.colors.blue500} />
             </div>
         )
     }
 
     return (
         <section className={`${utilities.classNames.bigSections} flex flex-col items-center gap-6`}>
-            <div>
-                <H1 content="Pricing" classes="text-center mb-4" />
+            <div className="text-center">
+                <H1 content="Pricing" classes="mb-4" />
                 <p>Start free and scale while you grow. No hidden fees. Unlimited users for free.</p>
             </div>
-            <div className="flex flex-col gap-4 md:flex-row">
+            <div className="flex flex-col gap-6 items-center md:flex-row">
                 {Prices.map(price => {
-                return <Card name={price.name} price={price.price} free={price.free} benefits={price.benefits}  />
+                    return <Card name={price.name} price={price.price} free={price.free} benefits={price.benefits}  />
                 })}
             </div>
+            <div className="text-center flex flex-col gap-2">
+                <p>All prices are in USD and charged per month with applicable taxes added at checkout.</p>
+                <a>View features</a>
+            </div>
+        </section>
+    )
+}
+
+function FAQSection(){
+    function Nav(){
+        const [activeBtn, setActiveBtn] = React.useState(true)
+        return (
+            <nav className={`${utilities.colors.lightGrey} rounded-md p-1`}>
+                <Button content="All" bgColor={utilities.colors.blue500} />
+                <Button content="Getting started" />
+                <Button content="Pricing" />
+            </nav>
+        )
+    }
+    function Accordion(){
+        return (
+            <div>
+
+            </div>
+        )
+    }
+    return (
+        <section className={utilities.classNames.smallSections + ` flex flex-col items-center gap-5`}>
+            <H1 content="Frequently asked questions" />
+            <Nav />
+            <Accordion />
         </section>
     )
 }
@@ -235,7 +276,7 @@ function Li({content, clickable = false, classes = ""}){
 function Button({content, bgColor="bg-transparent", classes, handleClick}){
     return (
         <button 
-        className={`hover:scale-[.99] ${bgColor} ${utilities.classNames.clickables} ${classes}`} 
+        className={`hover:scale-[.99] hover:opacity-95 ${bgColor === "bg-blue-500" && " bg-blue-500 text-white"} ${utilities.classNames.clickables} ${classes}`} 
         onClick={handleClick}>
             {content}
         </button>
