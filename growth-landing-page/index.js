@@ -10,7 +10,7 @@ function App(){
             <Header />
             <Hero />
             <VideoSection />
-            <hr className={utilities.colors.lightGrey} />
+            <hr className={colors.lightGrey} />
             <TestimonialSection />
             <PricingSection />
             <FAQSection />
@@ -29,26 +29,32 @@ const utilities = {
         lightGrey: "bg-light-grey",
         dark: "bg-dark",
         blue500: "bg-blue-500",
+    },
+    svg: {
+        linkedIn: <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>,
+        hamburgerMenu: <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>,
+        checkMark: <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>,
+        twitter: <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>,
     }
 }
 
+const {classNames, colors, svg} = utilities
 
 // HEADER 
 function Header(){
-    const hamburgerMenu = (<svg className="" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>)
     const [isNavShown, setIsNavShown] = React.useState(false)
     const navigationItems = [
         "Features",
         "About us",
         "Blog",
     ]
-    const {lightGrey} = utilities.colors
+    const {lightGrey} = colors
 
     function showNav(){
         setIsNavShown(prev => !prev)
     }
     return (
-        <header className={`${utilities.classNames.smallSections} flex items-center justify-between py-6`}>
+        <header className={`${classNames.smallSections} flex items-center justify-between py-6`}>
             <H1 content="Growth" />
             <ul className={
                     `flex flex-col gap-2 items-center absolute inset-0 bg-white
@@ -60,7 +66,7 @@ function Header(){
                 <Button content="Login" bgColor={lightGrey} />
             </ul>
             <Button 
-                content={hamburgerMenu} 
+                content={svg.hamburgerMenu} 
                 bgColor={lightGrey} 
                 classes="py-2 md:hidden"
                 handleClick={showNav} 
@@ -71,8 +77,7 @@ function Header(){
 
 // HERO
 function Hero(){
-    const padding = utilities.classNames.smallSections
-    const {colors} = utilities
+    const padding = classNames.smallSections
     function Title(){
         return (
             <section className={padding}>
@@ -105,7 +110,6 @@ function Hero(){
 }
 
 function VideoSection(){
-    const {colors, classNames} = utilities
     return (
         <section className={`${colors.dark} ${classNames.bigSections} text-white flex flex-col gap-4 text-center md:items-center`}>
             <H1 content="See how it works and get started in less than 2 minutes" classes="max-w-md self-center" />
@@ -116,7 +120,6 @@ function VideoSection(){
 }
 
 function TestimonialSection(){
-    const {colors, classNames} = utilities
     const Testimonials = [
         {
             testimonial: "Our business has seen a significant increase in productivity since we started using the Growth app.",
@@ -188,7 +191,7 @@ function PricingSection(){
     ]
 
     function Card({name, price, free, benefits}){
-        const {lightGrey, dark} = utilities.colors
+        const {lightGrey, dark, blue500} = colors
         return (
             <div className={
                 `${free ? `${lightGrey} ` : `${dark} text-white fill-white`} 
@@ -209,20 +212,20 @@ function PricingSection(){
                         return (
                                 <Li key={i} content={
                                     <>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+                                    {svg.checkMark}
                                     <span className="w-full leading-4">{b}</span>
                                     </>
                                 } classes="flex gap-3" />
                                 )
                     })}
                 </ul>
-                <Button content="Get Started" bgColor={utilities.colors.blue500} />
+                <Button content="Get Started" bgColor={blue500} />
             </div>
         )
     }
 
     return (
-        <section className={`${utilities.classNames.bigSections} flex flex-col items-center gap-6`}>
+        <section className={`${classNames.bigSections} flex flex-col items-center gap-6`}>
             <div className="text-center">
                 <H1 content="Pricing" classes="mb-4" />
                 <p>Start free and scale while you grow. No hidden fees. Unlimited users for free.</p>
@@ -243,8 +246,8 @@ function PricingSection(){
 function FAQSection(){
     function Nav(){
         return (
-            <nav className={`${utilities.colors.lightGrey} rounded-md p-1`}>
-                <Button content="All" bgColor={utilities.colors.blue500} />
+            <nav className={`${colors.lightGrey} rounded-md p-1`}>
+                <Button content="All" bgColor={colors.blue500} />
                 <Button content="Getting started" />
                 <Button content="Pricing" />
             </nav>
@@ -302,7 +305,7 @@ function FAQSection(){
         )
     }
     return (
-        <section className={utilities.classNames.smallSections + ` flex flex-col items-center gap-5`}>
+        <section className={classNames.smallSections + ` flex flex-col items-center gap-5`}>
             <H1 content="Frequently asked questions" classes="text-center" />
             <Nav />
             <AccordionWrapper />
@@ -312,14 +315,14 @@ function FAQSection(){
 
 function Footer(){
     return (
-        <footer className={`${utilities.colors.dark+" "+utilities.classNames.bigSections} flex flex-col gap-5`}>
+        <footer className={`${colors.dark+" "+classNames.bigSections} flex flex-col gap-5`}>
             <H1 content="Growth" classes="text-white" />
             <div className="flex flex-col bg-white p-4 rounded-md">
                 <h4 className="text-lg font-semibold">Subscribe to newsletter</h4>
                 <p>Subscribe now to receive  tips on how to take your business to the next level.</p>
                 <div className="mt-4 flex gap-2">
                     <input className="outline-none p-2 border-2 rounded-md" type="email" placeholder="Enter your email" />
-                    <Button bgColor={utilities.colors.blue500} content="Subscribe" />
+                    <Button bgColor={colors.blue500} content="Subscribe" />
                 </div>
             </div>
             <div className="text-white flex flex-wrap justify-between gap-4
@@ -347,7 +350,7 @@ function Footer(){
                 </section>
             </div>
             <div className="flex gap-4 text-gray-400">
-                <i>//Todo: add linkedln logo</i>
+                {}
                 <i>//Todo: add twitter logo</i>
             </div>
         </footer>
@@ -356,7 +359,7 @@ function Footer(){
 
 function Li({content, clickable = false, classes = ""}){
     return (
-        <li className={(clickable ? `${utilities.classNames.clickables} hover:bg-blue-100 ` : '') + classes}>
+        <li className={(clickable ? `${classNames.clickables} hover:bg-blue-100 ` : '') + classes}>
             {content}
         </li>
     )
@@ -364,7 +367,7 @@ function Li({content, clickable = false, classes = ""}){
 function Button({content, bgColor="bg-transparent", classes, handleClick}){
     return (
         <button 
-        className={`hover:scale-[.99] hover:opacity-95 ${bgColor === "bg-blue-500" && " bg-blue-500 text-white"} ${utilities.classNames.clickables} ${classes}`} 
+        className={`hover:scale-[.99] hover:opacity-95 ${bgColor === "bg-blue-500" && " bg-blue-500 text-white"} ${classNames.clickables} ${classes}`} 
         onClick={handleClick}>
             {content}
         </button>
