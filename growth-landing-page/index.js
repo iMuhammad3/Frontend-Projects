@@ -33,8 +33,8 @@ const utilities = {
     svg: {
         linkedIn: <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>,
         hamburgerMenu: <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>,
-        checkMark: <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>,
-        twitter: <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>,
+        checkMark: <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>,
+        twitter: <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>,
     }
 }
 
@@ -315,17 +315,19 @@ function FAQSection(){
 
 function Footer(){
     return (
-        <footer className={`${colors.dark+" "+classNames.bigSections} flex flex-col gap-5`}>
-            <H1 content="Growth" classes="text-white" />
-            <div className="flex flex-col bg-white p-4 rounded-md">
-                <h4 className="text-lg font-semibold">Subscribe to newsletter</h4>
-                <p>Subscribe now to receive  tips on how to take your business to the next level.</p>
-                <div className="mt-4 flex gap-2">
-                    <input className="outline-none p-2 border-2 rounded-md" type="email" placeholder="Enter your email" />
-                    <Button bgColor={colors.blue500} content="Subscribe" />
+        <footer className={`${colors.dark+" "+classNames.bigSections} flex flex-col gap-6 md:grid md:grid-cols-2`}>
+            <div className="flex flex-col gap-6 md:justify-self-start">
+                <H1 content="Growth" classes="text-white" />
+                <div className="flex flex-col bg-white p-6 rounded-md w-min">
+                    <h4 className="text-lg font-semibold">Subscribe to newsletter</h4>
+                    <p>Subscribe now to receive  tips on how to take your business to the next level.</p>
+                    <div className="mt-4 flex gap-2">
+                        <input className="outline-none p-2 border-2 rounded-md" type="email" placeholder="Enter your email" />
+                        <Button bgColor={colors.blue500} content="Subscribe" />
+                    </div>
                 </div>
             </div>
-            <div className="text-white flex flex-wrap justify-between gap-4
+            <div className="text-white flex flex-wrap justify-between gap-4 md:place-self-center md:w-full
             [&>section]:flex [&>section]:flex-col
             [&>section]:gap-3
             [&_h2]:text-lg
@@ -349,9 +351,12 @@ function Footer(){
                     <a>hello@growthapp.com</a>
                 </section>
             </div>
-            <div className="flex gap-4 text-gray-400">
-                {}
-                <i>//Todo: add twitter logo</i>
+            <div className="flex flex-col gap-4 fill-gray-400">
+                <div className="flex gap-4 hover:[&>svg]:fill-white [&>svg]:cursor-pointer">
+                    {svg.linkedIn}
+                    {svg.twitter}
+                </div>
+                <div className="text-gray-400">© 2023 Growth. All rights reserved</div>
             </div>
         </footer>
     )
