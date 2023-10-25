@@ -55,7 +55,7 @@ function Header(){
     }
     return (
         <header className={`${classNames.smallSections} flex items-center justify-between py-6`}>
-            <H1 content="Growth" />
+            <H1 content="Growth" classes="select-none" />
             <ul className={
                     `flex flex-col gap-2 items-center absolute inset-0 bg-white
                     md:relative md:flex md:flex-row md:bg-transparent
@@ -111,9 +111,9 @@ function Hero(){
 
 function VideoSection(){
     return (
-        <section className={`${colors.dark} ${classNames.bigSections} text-white flex flex-col gap-4 text-center md:items-center`}>
+        <section className={`${colors.dark} ${classNames.bigSections} text-white flex flex-col gap-6 text-center md:items-center`}>
             <H1 content="See how it works and get started in less than 2 minutes" classes="max-w-md self-center" />
-            <i>TODO: add video</i>
+            <Image src="https://github.com/iMuhammad3/images/blob/master/growth-video.png?raw=true" />
             <Button content="Get Started" bgColor={colors.blue500} />
         </section>
     )
@@ -288,7 +288,7 @@ function FAQSection(){
             }
 
             return (
-                <div className="border-b-2">
+                <div className="border-b-2 select-none">
                     <header onClick={showBody} className="flex items-start justify-between gap-6 py-4 cursor-pointer">
                         <h3 className="w-96 md:w-[550px]">{question}</h3>
                         <span className={`text-2xl transition ${active && 'rotate-45'}`}>+</span>
@@ -315,7 +315,7 @@ function FAQSection(){
 
 function Footer(){
     return (
-        <footer className={`${colors.dark+" "+classNames.bigSections} flex flex-col gap-6 md:grid md:grid-cols-2`}>
+        <footer className={`${colors.dark+" "+classNames.bigSections} flex flex-col gap-6 select-none md:grid md:grid-cols-2`}>
             <div className="flex flex-col gap-6 md:justify-self-start">
                 <H1 content="Growth" classes="text-white" />
                 <div className="flex flex-col bg-white p-6 rounded-md w-min">
@@ -369,10 +369,10 @@ function Li({content, clickable = false, classes = ""}){
         </li>
     )
 }
-function Button({content, bgColor="bg-transparent", classes, handleClick}){
+function Button({content, bgColor="bg-transparent", classes="", handleClick}){
     return (
         <button 
-        className={`hover:scale-[.99] hover:opacity-95 ${bgColor === "bg-blue-500" && " bg-blue-500 text-white"} ${classNames.clickables} ${classes}`} 
+        className={`hover:scale-[.99] hover:opacity-95 ${bgColor === "bg-blue-500" ? " bg-blue-500 text-white" : bgColor} ${classNames.clickables} ${classes}`} 
         onClick={handleClick}>
             {content}
         </button>
@@ -381,6 +381,10 @@ function Button({content, bgColor="bg-transparent", classes, handleClick}){
 function H1({size="text-3xl", content, classes=""}){
     return <h1 className={`${size} font-bold ${classes}`}>{content}</h1>
 }
-function Image({src, classes}){
-    return <img className={classes + " border rounded"} src={src} alt="" />
+function Image({src, classes=""}){
+    return (
+        <div className="max-w-[700px] overflow-hidden rounded-md border">
+            <img className={classes + " hover:scale-110 transition duration-500"} src={src} alt="" />
+        </div>
+    )
 }
