@@ -66,8 +66,8 @@ function App() {
             </p>
             <div className="mb-6">
                 {screen > 768
-                    ? svg.pattern_divider_desktop
-                    : svg.pattern_divider_mobile}
+                    ? pattern_divider_desktop
+                    : pattern_divider_mobile}
             </div>
             <DiceSvg handleClick={handleClick} isLoaded={isLoaded} />
         </div>
